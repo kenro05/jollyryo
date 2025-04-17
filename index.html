@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jolly Ryo. | Food Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Add audio element right after body tag -->
+    <audio id="backgroundMusic" loop>
+        <source src="skibdi.mp3" type="skibdi/mp3">
+        
+    </audio>
+
+    
+    <nav class="navbar" style="background-color: rgba(7, 7, 7, 0.5); padding: 20px 0; position: fixed; width: 100%; top: 0; z-index: 999;">
+        <div class="nav-brand" style="position: absolute; left: 50%; transform: translateX(-50%); top: 120px;">
+
+        </div>
+        <ul class="nav-links" style="display: flex; justify-content: center; gap: 40px; list-style: none; width: 100%; padding: 0;">
+            <li><a href="#home" style="color: #000; text-decoration: none; font-weight: bold; font-size: 18px; transition: color 0.3s;">Home</a></li>
+            <li><a href="#menu" style="color: #000; text-decoration: none; font-weight: bold; font-size: 18px; transition: color 0.3s;">Menu</a></li>
+            <li><a href="#services" style="color: #000; text-decoration: none; font-weight: bold; font-size: 18px; transition: color 0.3s;">Services</a></li>
+            <li><a href="#about" style="color: #000; text-decoration: none; font-weight: bold; font-size: 18px; transition: color 0.3s;">About</a></li>
+            <li><a href="#contact" style="color: #000; text-decoration: none; font-weight: bold; font-size: 18px; transition: color 0.3s;">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <video autoplay muted loop playsinline>
+            <source src="aaa.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1 class="fade-in" style="color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), 
+                4px 4px 8px rgba(0, 0, 0, 0.5), 
+                0px 0px 15px rgba(0, 0, 0, 0.3);">Welcome to Jolly Ryo.</h1>
+            <p class="fade-in" style="color: rgb(245, 242, 242); text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7),
+                4px 4px 8px rgba(0, 0, 0, 0.5),
+                0px 0px 15px rgba(0, 0, 0, 0.3);">Experience the finest chicken dishes in town</p>
+            <a href="#menu" class="cta-button" style="background-color: white; color: rgb(240, 223, 223);"></a>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-section" style="background-image: url('hee.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-color: rgba(255, 255, 255, 0.8); padding: 40px 0;">
+        <h2>Our Menu</h2>
+        <div class="menu-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            
+            
+            
+            
+            
+        </div>
+        <div class="order-now-container" style="text-align: center; margin: 20px 0;">
+            <div id="shopping-cart" class="shopping-cart" style="display: none;">
+                <h3>Your Order</h3>
+                <div id="cart-items"></div>
+                <div id="cart-total">Total: ₱0.00</div>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                    <button onclick="checkout()" class="checkout-btn">Proceed to Checkout</button>
+                    <button onclick="cancelOrder()" style="background-color: #ff4444; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;">Cancel Order</button>
+                </div>
+            </div>
+        </div>
+        <!-- Removing the Order Now button -->
+        <div class="menu-grid">
+            <!-- Existing items -->
+            <div class="menu-item" data-category="grilled">
+                <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixlib=rb-1.2.1&q=80&w=400" alt="Grilled Chicken">
+                <h3>Herb Grilled Chicken</h3>
+                <p>Tender chicken marinated in fresh herbs</p>
+                <span class="price">₱18.99</span>
+                <div class="order-controls">
+                    <input type="number" min="1" value="1" class="quantity-input">
+                    <button class="add-to-cart" onclick="addToCart(this)" data-name="Herb Grilled Chicken" data-price="18.99">Add to Cart</button>
+                </div>
+            </div>
+            <!-- New items -->
+            <div class="menu-item" data-category="grilled">
+                <img src="https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixlib=rb-1.2.1&q=80&w=400" alt="Lemon Pepper Chicken">
+                <h3>Lemon Pepper Chicken</h3>
+                <p>Zesty grilled chicken with black pepper</p>
+                <span class="price">₱19.99</span>
+                <div class="order-controls">
+                    <input type="number" min="1" value="1" class="quantity-input">
+                    <button class="add-to-cart" onclick="addToCart(this)" data-name="Lemon Pepper Chicken" data-price="19.99">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-category="fried">
+                <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58" alt="Crispy Chicken">
+                <h3>Crispy Fried Ryo's Chicken</h3>
+        
+                <p>Golden-brown crispy chicken</p>
+                <span class="price">₱16.99</span>
+                <div class="order-controls">
+                    <input type="number" min="1" value="1" class="quantity-input">
+                    <button class="add-to-cart" onclick="addToCart(this)" data-name="Crispy Fried Chicken" data-price="16.99">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="sides">
+                <img src="https://images.unsplash.com/photo-1585109649139-366815a0d713" alt="Mashed Potatoes">
+                <h3>Creamy Mashed Potatoes</h3>
+                <p>Buttery smooth mashed potatoes</p>
+                <span class="price">₱5.99</span>
+                <div class="order-controls">
+                    <input type="number" min="1" value="1" class="quantity-input">
+                    <button class="add-to-cart" onclick="addToCart(this)" data-name="Creamy Mashed Potatoes" data-price="5.99">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="main">
+                <img src="https://images.unsplash.com/photo-1610057099443-fde8c4d50f91" alt="Party Bundle">
+                <h3>Party Bundle</h3>
+                <p>2 whole chickens with 4 large sides</p>
+                <span class="price">₱69.99</span>
+                <div class="order-controls">
+                    <input type="number" min="1" value="1" class="quantity-input">
+                    <button class="add-to-cart" onclick="addToCart(this)" data-name="Party Bundle" data-price="69.99">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="drinks">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd" alt="Mango Shake">
+                <h3>Fresh Mango Shake</h3>
+                <p>Sweet and creamy mango shake</p>
+                <span class="price">₱4.99</span>
+                <div class="order-controls">
+                    <input type="number" min="1" value="1" class="quantity-input">
+                    <button class="add-to-cart" onclick="addToCart(this)" data-name="Fresh Mango Shake" data-price="4.99">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-category="fried">
+                <img src="https://images.unsplash.com/photo-1569691899455-88464f6d3ab1?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixlib=rb-1.2.1&q=80&w=400" alt="Nashville Hot Chicken">
+                <h3>Nashville Hot Chicken</h3>
+                <p>Spicy fried chicken with special sauce</p>
+                <span class="price">₱17.99</span>
+                <div class="order-controls">
+                    <input type="number" min="1" value="1" class="quantity-input">
+                    <button class="add-to-cart" onclick="addToCart(this)" data-name="Nashville Hot Chicken" data-price="17.99">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-category="sides">
+                <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixlib=rb-1.2.1&q=80&w=400" alt="Coleslaw">
+                <h3>Creamy Coleslaw</h3>
+                <p>Fresh cabbage with house dressing</p>
+                <span class="price">₱4.99</span>
+                <div class="order-controls">
+                    <input type="number" min="1" value="1" class="quantity-input">
+                    <button class="add-to-cart" onclick="addToCart(this)" data-name="Creamy Coleslaw" data-price="4.99">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-category="main">
+                <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixlib=rb-1.2.1&q=80&w=400" alt="Family Feast">
+                <h3>Family Feast</h3>
+                <p>Whole chicken with 3 sides of choice</p>
+                <span class="price">₱39.99</span>
+                <div class="order-controls">
+                    <input type="number" min="1" value="1" class="quantity-input">
+                    <button class="add-to-cart" onclick="addToCart(this)" data-name="Family Feast" data-price="39.99">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-category="drinks">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixlib=rb-1.2.1&q=80&w=400" alt="Fresh Lemonade">
+                <h3>House Lemonade</h3>
+                <p>Fresh squeezed with mint leaves</p>
+                <span class="price">₱3.99</span>
+                <div class="order-controls">
+                    <input type="number" min="1" value="1" class="quantity-input">
+                    <button class="add-to-cart" onclick="addToCart(this)" data-name="House Lemonade" data-price="3.99">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-category="drinks">
+                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixlib=rb-1.2.1&q=80&w=400" alt="Iced Tea">
+                <h3>Southern Sweet Tea</h3>
+                <p>Classic sweet tea with lemon</p>
+                <span class="price">₱3.99</span>
+                <div class="order-controls">
+                    <input type="number" min="1" value="1" class="quantity-input">
+                    <button class="add-to-cart" onclick="addToCart(this)" data-name="Southern Sweet Tea" data-price="3.99">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-drumstick-bite"></i>
+                <h3>Family Meals</h3>
+                <p>Perfect chicken meals for the whole family</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-truck"></i>
+                <h3>Quick Delivery</h3>
+                <p>Hot and fresh chicken delivered to your door</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-users"></i>
+                <h3>Party Platters</h3>
+                <p>Large orders for events and gatherings</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>At Jolly Ryo, we're passionate about perfecting the art of chicken cuisine. Our expert chefs use time-honored recipes and premium ingredients to create the most delicious chicken dishes that will keep you coming back for more.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Get in Touch</h2>
+        <div class="contact-container" style="display: flex; justify-content: space-between; gap: 40px;">
+            <!-- Contact Information -->
+            <div class="contact-form-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info" style="text-align: left;">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Jolly Ryo, Street Zone 1 Vargas bayot</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+234565</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>jollyryo@gmail.com</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message"></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Order Form -->
+            <div class="order-form-section">
+                <h3>Place an Order</h3>
+                <form class="order-form" onsubmit="handleOrderSubmission(event)">
+                    <!-- Inside the order-form-section, before the submit button -->
+                    <div class="order-details">
+                        <input type="text" id="customerName" placeholder="Your Name" required>
+                        <input type="email" id="customerEmail" placeholder="Your Email" required>
+                        <input type="tel" id="customerPhone" placeholder="Your Phone Number" required>
+                        <input type="text" id="deliveryAddress" placeholder="Delivery Address" required>
+                        <div class="order-total" id="orderTotalDisplay">Order Total: ₱0.00</div>
+                        <textarea id="orderNotes" placeholder="Additional Notes (Optional)"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Jolly Ryo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+            let cart = [];
+            
+            function addToCart(button) {
+                const menuItem = button.closest('.menu-item');
+                const quantity = menuItem.querySelector('.quantity-input').value;
+                const name = button.dataset.name;
+                const price = parseFloat(button.dataset.price);
+                
+                cart.push({
+                    name: name,
+                    quantity: parseInt(quantity),
+                    price: price,
+                    total: price * parseInt(quantity)
+                });
+                
+                updateCart();
+                document.getElementById('shopping-cart').style.display = 'block';
+            }
+            
+            function updateCart() {
+                const cartItems = document.getElementById('cart-items');
+                const cartTotal = document.getElementById('cart-total');
+                let total = 0;
+                
+                cartItems.innerHTML = cart.map(item => {
+                    total += item.total;
+                    return `
+                        <div class="cart-item">
+                            <span>${item.quantity}x ${item.name}</span>
+                            <span>₱${item.total.toFixed(2)}</span>
+                        </div>
+                    `;
+                }).join('');
+                
+                cartTotal.textContent = `Total: ₱${total.toFixed(2)}`;
+            }
+            
+            function checkout() {
+                const total = cart.reduce((sum, item) => sum + item.total, 0);
+                const orderTotalDisplay = document.getElementById('orderTotalDisplay');
+                const orderNotes = document.getElementById('orderNotes');
+                
+                if (orderTotalDisplay && orderNotes) {
+                    orderTotalDisplay.textContent = `Order Total: ₱${total.toFixed(2)}`;
+                    const orderDetails = cart.map(item => 
+                        `${item.quantity}x ${item.name}`
+                    ).join('\n');
+                    orderNotes.value = `My Order:\n${orderDetails}\n\nTotal: ₱${total.toFixed(2)}`;
+                }
+                
+                window.location.href = '#contact';
+                cart = [];
+                updateCart();
+                document.getElementById('shopping-cart').style.display = 'none';
+            }
+        
+        function cancelOrder() {
+            cart = [];
+            updateCart();
+            document.getElementById('shopping-cart').style.display = 'none';
+        }
+        </script>
+       
+    </script>
+</body>
+</html>
+<script>
+        function handleOrderSubmission(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const address = document.getElementById('deliveryAddress').value;
+            
+            if (name && phone && address) {
+                // Show success message with custom styling
+                const successMessage = document.createElement('div');
+                successMessage.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color:#4CAF50;
+                    color: #333;
+                    padding: 20px;
+                    border-radius: 10px;
+                    text-align: center;
+                    z-index: 1000;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                    border: 1px solid #ddd;
+                `;
+                successMessage.innerHTML = `
+                    <h3 style="color:#FFFFFF;">Order Confirmed! 🎉</h3>
+                    <p>Your order is on the way!</p>
+                    <p>Delivery Address: ${address}</p>
+                    <p>Estimated Time: 30-45 minutes</p>
+                `;
+                document.body.appendChild(successMessage);
+                
+                // Remove message and redirect to home page after 3 seconds
+                setTimeout(() => {
+                    successMessage.remove();
+                    window.location.href = '#home';
+                }, 3000);
+                
+                // Clear form and cart
+                event.target.reset();
+                cart = [];
+                updateCart();
+                document.getElementById('shopping-cart').style.display = 'none';
+            } else {
+                alert('Please fill in all required fields');
+            }
+        }
+    </script>
